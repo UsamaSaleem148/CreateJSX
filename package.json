@@ -1,0 +1,11 @@
+{
+  "name": "create_jsx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "create_jsx.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

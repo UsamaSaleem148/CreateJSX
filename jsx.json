@@ -1,0 +1,22 @@
+[{
+	"element": "div",
+	"class": "parent",
+	"id": "parent_1_id",
+	"children": [{
+		"element": "p",
+		"data": "This is 1st jsx",
+		"class": "child",
+		"id": "child_1_id"
+	}]
+},
+{
+	"element": "div",
+	"class": "parent",
+	"id": "parent_2_id",
+	"children": [{
+		"element": "p",
+		"data": "This is 2nd jsx",
+		"class": "child",
+		"id": "child_2_id"
+	}]
+}]

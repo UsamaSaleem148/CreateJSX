@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Generate HTML</title>
+  </head>
+  <body></body>
+
+  <script>
+    const myFuncntion = () => {
+      alert('Button Call')
+    }
+
+    const fileData = [
+      {
+        element: 'div',
+        attributes: [
+          {
+            class: 'parent',
+            id: 'parent_1_id',
+          },
+        ],
+        children: [
+          {
+            element: 'input',
+            attributes: [
+              {
+                type: 'button',
+                value: 'Try It!',
+                class: 'child',
+                id: 'child_1_id',
+              },
+            ],
+            events: [
+              {
+                click: myFuncntion,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        element: 'div',
+        attributes: [
+          {
+            class: 'parent',
+            id: 'parent_2_id',
+          },
+        ],
+        children: [
+          {
+            element: 'p',
+            data: 'This is 2nd jsx',
+            attributes: [
+              {
+                class: 'child',
+                id: 'child_2_id',
+              },
+            ],
+          },
+        ],
+      },
+    ]
+
+    const generateElement = (element, parent) => {
+      let elem = document.createElement(element.element)
+      if (element.attributes) {
+        Object.keys(element.attributes[0]).forEach(function (key, index) {
+          elem.setAttribute(key, element.attributes[0][key])
+        })
+      }
+      if (element.events) {
+        Object.keys(element.events[0]).forEach(function (key, index) {
+          elem.addEventListener(key, element.events[0][key])
+        })
+      }
+      if (element.data) {
+        var snippet = document.createTextNode(element.data)
+        elem.appendChild(snippet)
+      }
+      if (element.children && element.children.length > 0) {
+        for (var k = 0; k < element.children.length; k++) {
+          generateElement(element.children[k], elem)
+        }
+      }
+      if (parent) {
+        parent.appendChild(elem)
+      } else {
+        document.body.appendChild(elem)
+      }
+    }
+
+    for (let i = 0; i < fileData.length; i++) {
+      generateElement(fileData[i], null)
+    }
+  </script>
+</html>
